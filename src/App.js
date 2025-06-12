@@ -82,6 +82,7 @@ function App() {
             <input 
               value={password.value} 
               type="password"
+           //   The password input is a special case that has an object as state instead of a string. As a result, the state setter should spread the previous values so they don’t get overridden. Finally, to make sure the password characters are obscured, you need to use the type “password” for the input.
               onChange={(e) => { setPassword({...password, value: e.target.value})
               }}
               onBlur={() => {
