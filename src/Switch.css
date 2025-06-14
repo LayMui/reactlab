@@ -8,9 +8,16 @@
   header {
     position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;  /* <- This pushes the children to opposite ends */
+    padding: 16px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
   }
   
   .Page {
@@ -19,14 +26,7 @@
   }
   
 
-  /* how to make the switch move to the far right */
-.switch {
-    position: absolute;
-    display: inline-block;
-    right: -100px;
-    width: 60px;
-    height: 34px;
-}
+
 
 /* Hide default HTML checkbox */
 .switch input {
