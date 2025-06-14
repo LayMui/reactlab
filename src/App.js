@@ -1,111 +1,87 @@
 import "./App.css";
-import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 import { validateEmail } from "./utils";
+const schema = yup.object().shape({  
+  firstName: yup.string().required("First name is required"),
+  lastName: yup.string(), 
+  email: yup
+    .string()
+    .email("Invalid email")
+    .required("Email is required")
+    .test("validateEmail", "Invalid email", (value) => validateEmail(value)),
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  role: yup
+    .string()
+    .notOneOf(['role'], "Please select a valid role")
+    .required("Role is required"),
+});
 
-const PasswordErrorMessage = () => {
-  return (
-    <p className="FieldError">Password should have at least 8 characters</p>
-  );
+// Password Error Component (Optionally)
+const PasswordErrorMessage = (msg) => {
+  return <p className="FieldError">{msg.children}</p>;
 };
 
 function App() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState({
-    value: "",
-    isTouched: false,
-  });
-  const [role, setRole] = useState("role");
-
-  const getIsFormValid = () => {
-    // Implement this function
-    return (
-      firstName && validateEmail(email) &&
-      password.value.length >= 8 &&
-      role !== "role"
-    )
-  };
-
-  const clearForm = () => {
-    setFirstName(""); 
-    setLastName(""); 
-    setEmail(""); 
-    setPassword({ 
-      value: "", 
-      isTouched: false, 
-    }); 
-    setRole("role"); 
-  };
-
-  const handleSubmit = (e) => {
-   e.preventDefault();
-   alert("Account created")
-    clearForm();
-  };
-
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <h2>Sign Up</h2>
-          <div className="Field">
-            <label>
-              First name <sup>*</sup>
-            </label>
-            <input 
-            value={firstName}
-            onChange={ (e) => {setFirstName(e.target.value)
-            }}
-            placeholder="First name" />
-          </div>
-          <div className="Field">
-            <label>Last name</label>
-            <input value={lastName}
-            onChange={ (e) => {setLastName(e.target.value)
-            }}
-            placeholder="Last name" />
-          </div>
-          <div className="Field">
-            <label>
-              Email address <sup>*</sup>
-            </label>
-            <input value={email}
-            onChange={ (e) => {setEmail(e.target.value)
-            }}
-            placeholder="Email address" />
-          </div>
-          <div className="Field">
-            <label>
-              Password <sup>*</sup>
-            </label>
-            <input 
-              value={password.value} 
-              type="password"
-           //   The password input is a special case that has an object as state instead of a string. As a result, the state setter should spread the previous values so they don’t get overridden. Finally, to make sure the password characters are obscured, you need to use the type “password” for the input.
-              onChange={(e) => { setPassword({...password, value: e.target.value})
-              }}
-              onBlur={() => {
-                setPassword({...password, isTouched: true})
-              }}
-              placeholder="Password"
-            />
-          </div>
-          <div className="Field">
-            <label>
-              Role <sup>*</sup>
-            </label>
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
-              <option value="role">Role</option>
-              <option value="individual">Individual</option>
-              <option value="business">Business</option>
-            </select>
-          </div>
-          <button type="submit" disabled={!getIsFormValid()}>
-            Create account
-          </button>
-        </fieldset>
-      </form>
+      <Formik
+        initialValues={{ firstName: "", lastName: "", email: "", password: "", role: "role" }}
+        validationSchema={schema}
+        onSubmit={(values, { resetForm }) => {
+          alert("Account created!");
+          resetForm();
+        }}>
+        {({ isValid, dirty }) => (
+          <Form>
+            <fieldset>
+              <h2>Sign Up</h2>
+
+              <div className="Field">
+                <label>First name <sup>*</sup></label>
+                <Field name="firstName" placeholder="First name" />
+                <ErrorMessage name="firstName" component="p" className="FieldError" />
+              </div>
+
+              <div className="Field">
+                <label>Last name</label>
+                <Field name="lastName" placeholder="Last name" />
+                <ErrorMessage name="lastName" component="p" className="FieldError" />
+              </div>
+
+              <div className="Field">
+                <label>Email address <sup>*</sup></label>
+                <Field name="email" placeholder="Email address" />
+                <ErrorMessage name="email" component="p" className="FieldError" />
+              </div>
+
+              <div className="Field">
+                <label>Password <sup>*</sup></label>
+                <Field name="password" type="password" placeholder="Password" />
+                <ErrorMessage name="password" render={(msg) => <PasswordErrorMessage>{msg}</PasswordErrorMessage>} />
+              </div>
+
+              <div className="Field">
+                <label>Role <sup>*</sup></label>
+                <Field as="select" name="role">
+                    <option value="role">Select a role</option>
+                    <option value="individual">Individual</option>
+                    <option value="business">Business</option>
+                </Field>
+                <ErrorMessage name="role" component="p" className="FieldError" />
+              </div>
+
+              <button type="submit" disabled={!isValid || !dirty}>
+                Create account
+              </button>
+            </fieldset>
+          </Form>
+        )}
+
+      </Formik>
     </div>
   );
 }
