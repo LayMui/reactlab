@@ -1,6 +1,7 @@
 import "./Switch.css";
 import Switch from "./Switch";
 import { ThemeProvider, useTheme } from "./ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 const Title = ({ children }) => {
   const { theme } = useTheme();
@@ -55,9 +56,16 @@ const Header = () => {
 };
 
 const Page = () => {
+  const navigate = useNavigate();
   return (
     <div className="Page">
+       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
       <Title>When it comes to dough</Title>
+      <button style={{width: "150px"}} onClick={() => navigate('/state')}>Go to State</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/fetchData')}>Fetch Data</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/increment')}>Custom Hook: Increment</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/updateDay')}>Custom Hook: Update Day</button>
+      </div>
       <Content />
     </div>
   );
