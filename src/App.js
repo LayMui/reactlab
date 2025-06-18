@@ -9,6 +9,9 @@ import FetchData from "./FetchData";
 import Increment from "./Increment";
 import UpdateDay from "./updateDay";
 import Reducer from "./Reducer";
+import ContextProvider from "./ContextProvider";
+import LiveOrder from "./LiveOrder";
+import RadioGroup from "./RadioApp";
 function AppRouter() {
   return (
     <ThemeProvider>
@@ -21,6 +24,9 @@ function AppRouter() {
           <Route path="/increment" element={<Increment />} />
           <Route path="/updateDay" element={<UpdateDay />} />
           <Route path="/reducer" element={<Reducer />} />
+          <Route path="/contextAPI" element={<ContextProvider />} />
+          <Route path="/liveOrder" element={<LiveOrder />} />
+          <Route path="/radioGroup" element={<RadioGroup />} />
         </Routes>
       </Router>
     </ThemeProvider>

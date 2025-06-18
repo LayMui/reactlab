@@ -66,6 +66,9 @@ const Page = () => {
       <button style={{width: "150px"}} onClick={() => navigate('/increment')}>Custom Hook: Increment</button>
       <button style={{width: "150px"}} onClick={() => navigate('/updateDay')}>Custom Hook: Update Day</button>
       <button style={{width: "150px"}} onClick={() => navigate('/reducer')}>useReducer Hook</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/contextAPI')}>contextAPI</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/liveOrder')}>liveOrder</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/radioGroup')}>radioGroup</button>
       </div>
       <Content />
     </div>

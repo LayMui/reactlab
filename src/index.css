@@ -62,3 +62,9 @@ button:nth-child(3):hover {
   gap: 12px;
 }
 
+.Row {
+  display: flex;
+  justify-content: center;  /* Center children horizontally */
+  align-items: center;      /* Align children vertically */
+  margin-top: 40px;         /* Optional: add spacing from top */
+}
