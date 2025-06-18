@@ -58,9 +58,15 @@ const Header = () => {
 const Page = () => {
   const navigate = useNavigate();
   return (
-    <div className="Page">
-       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-      <Title>When it comes to dough</Title>
+      <div className="Page">
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+        gap: "1rem",
+        padding: "1rem",
+        justifyItems: "center",
+      }}>
+   
       <button style={{width: "150px"}} onClick={() => navigate('/state')}>Go to State</button>
       <button style={{width: "150px"}} onClick={() => navigate('/fetchData')}>Fetch Data</button>
       <button style={{width: "150px"}} onClick={() => navigate('/increment')}>Custom Hook: Increment</button>
@@ -69,7 +75,9 @@ const Page = () => {
       <button style={{width: "150px"}} onClick={() => navigate('/contextAPI')}>contextAPI</button>
       <button style={{width: "150px"}} onClick={() => navigate('/liveOrder')}>liveOrder</button>
       <button style={{width: "150px"}} onClick={() => navigate('/radioGroup')}>radioGroup</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/forwardRef')}>ForwardRef API</button>
       </div>
+      <Title style={{ gridColumn: "1 / -1" }}>When it comes to dough</Title>
       <Content />
     </div>
   );
