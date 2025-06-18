@@ -76,6 +76,7 @@ const Page = () => {
       <button style={{width: "150px"}} onClick={() => navigate('/liveOrder')}>liveOrder</button>
       <button style={{width: "150px"}} onClick={() => navigate('/radioGroup')}>radioGroup</button>
       <button style={{width: "150px"}} onClick={() => navigate('/forwardRef')}>ForwardRef API</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/cursorTracker')}>Cursor Tracker</button>
       </div>
       <Title style={{ gridColumn: "1 / -1" }}>When it comes to dough</Title>
       <Content />

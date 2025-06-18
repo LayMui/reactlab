@@ -13,6 +13,7 @@ import ContextProvider from "./ContextProvider";
 import LiveOrder from "./LiveOrder";
 import RadioGroup from "./RadioApp";
 import MyInputParent from "./MyInputParent";
+import CursorTracker from "./CursorTracker";
 function AppRouter() {
   return (
     <ThemeProvider>
@@ -29,6 +30,7 @@ function AppRouter() {
           <Route path="/liveOrder" element={<LiveOrder />} />
           <Route path="/radioGroup" element={<RadioGroup />} />
           <Route path="/forwardRef" element={<MyInputParent />} />
+          <Route path="/cursorTracker" element={<CursorTracker />} />
         </Routes>
       </Router>
     </ThemeProvider>
