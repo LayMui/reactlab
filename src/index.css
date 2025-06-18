@@ -11,3 +11,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Reducer {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+} 
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+/* Different button colors */
+button:nth-child(1) {
+  background-color: #4caf50; /* green */
+}
+
+button:nth-child(1):hover {
+  background-color: #45a049;
+}
+
+button:nth-child(2) {
+  background-color: #2196f3; /* blue */
+}
+
+button:nth-child(2):hover {
+  background-color: #1e88e5;
+}
+
+button:nth-child(3) {
+  background-color: #f44336; /* red */
+}
+
+button:nth-child(3):hover {
+  background-color: #302929;
+}
+
+/* Center button container */
+.Reducer > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+

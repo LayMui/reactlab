@@ -7,7 +7,8 @@ import { ThemeProvider } from "./ThemeContext";
 import ManageState from "./ManageState";
 import FetchData from "./FetchData";
 import Increment from "./Increment";
-import UpdateDay from "./UpdateDay";
+import UpdateDay from "./updateDay";
+import Reducer from "./Reducer";
 function AppRouter() {
   return (
     <ThemeProvider>
@@ -19,6 +20,7 @@ function AppRouter() {
           <Route path="/fetchData" element={<FetchData />} />
           <Route path="/increment" element={<Increment />} />
           <Route path="/updateDay" element={<UpdateDay />} />
+          <Route path="/reducer" element={<Reducer />} />
         </Routes>
       </Router>
     </ThemeProvider>

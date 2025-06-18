@@ -65,6 +65,7 @@ const Page = () => {
       <button style={{width: "150px"}} onClick={() => navigate('/fetchData')}>Fetch Data</button>
       <button style={{width: "150px"}} onClick={() => navigate('/increment')}>Custom Hook: Increment</button>
       <button style={{width: "150px"}} onClick={() => navigate('/updateDay')}>Custom Hook: Update Day</button>
+      <button style={{width: "150px"}} onClick={() => navigate('/reducer')}>useReducer Hook</button>
       </div>
       <Content />
     </div>
