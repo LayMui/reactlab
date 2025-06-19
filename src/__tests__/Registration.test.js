@@ -1,20 +1,20 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Registration from './Registration';
-import { mockNavigate, resetMocks } from './__mocks__/react-router-dom';
+import Registration from '../Registration';
+import { mockNavigate, resetMocks } from '../__mocks__/react-router-dom';
 
 jest.setTimeout(30000);
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Mock the validateEmail util to always return true
-jest.mock('./utils', () => ({
+jest.mock('../utils', () => ({
   validateEmail: jest.fn(() => true),
 }));
 
 // Import the mocked function so we can control it
-import { validateEmail } from './utils';
+import { validateEmail } from '../utils';
 
 // Tell Jest to use our manual mock
 jest.mock('react-router-dom');

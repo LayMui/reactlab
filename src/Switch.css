@@ -12,7 +12,7 @@
     justify-content: space-between;  /* <- This pushes the children to opposite ends */
     padding: 16px;
   }
-  
+ 
   .switch {
     position: relative;
     display: inline-block;

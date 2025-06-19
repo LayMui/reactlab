@@ -2,7 +2,8 @@ import "./Switch.css";
 import Switch from "./Switch";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { useNavigate } from "react-router-dom";
-
+import FeedbackForm from "./FeedbackForm";
+ 
 // Title component with support for external style
 const Title = ({ children, style = {} }) => {
   const { theme } = useTheme();
@@ -66,6 +67,11 @@ const Page = () => {
     { path: "/cursorTracker", label: "Cursor Tracker" },
   ];
 
+  const handleSubmit = (data) => {
+    console.log("Form submitted!", data);
+  };
+
+
   return (
     <div className="Page" style={{ padding: "1rem" }}>
       <div
@@ -90,20 +96,40 @@ const Page = () => {
       </div>
       <Title style={{ gridColumn: "1 / -1" }}>When it comes to dough</Title>
       <Content />
+
+
+      {/* ✅ Add FeedbackForm here */}
+        <FeedbackForm onSubmit={handleSubmit} />
+    
+   
     </div>
   );
 };
 
 function AppContent() {
   const { theme } = useTheme();
+ 
 
   return (
     <div
       className="App"
-      style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+      style={{
+        backgroundColor: theme === "light" ? "white" : "black",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden", // Prevent double scroll
+      }}
     >
       <Header />
+      <main style={{
+        flex: 1,
+        overflowY: "auto", // Enable vertical scrolling
+        padding: "1rem",
+      }}>
       <Page />
+      </main>
+   
     </div>
   );
 }
