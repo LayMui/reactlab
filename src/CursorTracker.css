@@ -53,4 +53,61 @@
     color: #444;
     margin-top: 1rem;
   }
+
+  .box {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #defaa2;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .toggle {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .toggle input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #ccc;
+    border-radius: 10px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .toggle input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  .toggle input[type="checkbox"]:checked {
+    background: #4caf50;
+  }
+  
+  .toggle input[type="checkbox"]:checked::before {
+    transform: translateX(20px);
+  }
   

@@ -16,6 +16,8 @@ fieldset {
 }
 
 label {
+  text-align: left; /* <-- Explicitly aligns text to the left */
+  display: block;   /* Ensure it's treated as a block element */
   margin-bottom: 8px;
   font-size: 14px;
 }
@@ -57,7 +59,8 @@ select {
 }
 
 button {
-  padding: 12px;
+  height: 60px; /* or adjust as needed */
+  padding: 0 24px;
   width: 240px;
   border-radius: 4px;
   border: 1px solid #ccc;

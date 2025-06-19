@@ -44,49 +44,50 @@ function Registration() {
             navigate("/welcome");
         }}>
         {({ isValid, dirty }) => (
-          <Form>
-            <fieldset>
-              <h2>Sign Up</h2>
-
-              <div className="Field">
-                <label>First name <sup>*</sup></label>
-                <Field name="firstName" placeholder="First name" />
-                <ErrorMessage name="firstName" component="p" className="FieldError" />
-              </div>
-
-              <div className="Field">
-                <label>Last name</label>
-                <Field name="lastName" placeholder="Last name" />
-                <ErrorMessage name="lastName" component="p" className="FieldError" />
-              </div>
-
-              <div className="Field">
-                <label>Email address <sup>*</sup></label>
-                <Field name="email" placeholder="Email address" />
-                <ErrorMessage name="email" component="p" className="FieldError" />
-              </div>
-
-              <div className="Field">
-                <label>Password <sup>*</sup></label>
-                <Field name="password" type="password" placeholder="Password" />
-                <ErrorMessage name="password" render={(msg) => <PasswordErrorMessage>{msg}</PasswordErrorMessage>} />
-              </div>
-
-              <div className="Field">
-                <label>Role <sup>*</sup></label>
-                <Field as="select" name="role">
-                    <option value="role">Select a role</option>
-                    <option value="individual">Individual</option>
-                    <option value="business">Business</option>
-                </Field>
-                <ErrorMessage name="role" component="p" className="FieldError" />
-              </div>
-
-              <button type="submit" disabled={!isValid || !dirty}>
-                Create account
-              </button>
-            </fieldset>
-          </Form>
+       <Form>
+       <fieldset>
+         <h2>Sign Up</h2>
+     
+         <div className="Field">
+           <label htmlFor="firstName">First name <sup>*</sup></label>
+           <Field id="firstName" name="firstName" placeholder="First name" />
+           <ErrorMessage name="firstName" component="p" className="FieldError" />
+         </div>
+     
+         <div className="Field">
+           <label htmlFor="lastName">Last name</label>
+           <Field id="lastName" name="lastName" placeholder="Last name" />
+           <ErrorMessage name="lastName" component="p" className="FieldError" />
+         </div>
+     
+         <div className="Field">
+           <label htmlFor="email">Email address <sup>*</sup></label>
+           <Field id="email" name="email" placeholder="Email address" />
+           <ErrorMessage name="email" component="p" className="FieldError" />
+         </div>
+     
+         <div className="Field">
+           <label htmlFor="password">Password <sup>*</sup></label>
+           <Field id="password" name="password" type="password" placeholder="Password" />
+           <ErrorMessage name="password" render={(msg) => <PasswordErrorMessage>{msg}</PasswordErrorMessage>} />
+         </div>
+     
+         <div className="Field">
+           <label htmlFor="role">Role <sup>*</sup></label>
+           <Field as="select" id="role" name="role">
+             <option value="role">Select a role</option>
+             <option value="individual">Individual</option>
+             <option value="business">Business</option>
+           </Field>
+           <ErrorMessage name="role" component="p" className="FieldError" />
+         </div>
+     
+         <button type="submit" disabled={!isValid || !dirty}>
+           Create account
+         </button>
+       </fieldset>
+     </Form>
+     
         )}
 
       </Formik>
