@@ -50,17 +50,12 @@ describe('Registration form', () => {
 
     // Fill out ALL form fields
     await user.type(screen.getByPlaceholderText(/First name/i), 'John');
-    await delay(200);
-    
     await user.type(screen.getByPlaceholderText(/Last name/i), 'Doe');
-    await delay(200);
     
     // Clear and retype email to trigger validation
     const emailInput = screen.getByPlaceholderText(/Email address/i);
     await user.clear(emailInput);
-    await delay(100);
     await user.type(emailInput, 'john@example.com');
-    await delay(500); // Extra delay for email validation
     
     await user.type(screen.getByPlaceholderText(/Password/i), 'password123');
     await delay(200);
@@ -70,8 +65,8 @@ describe('Registration form', () => {
     await delay(500);
 
     // Debug: Check validation state
-    console.log('validateEmail mock called:', validateEmail.mock.calls.length, 'times');
-    console.log('validateEmail mock calls:', validateEmail.mock.calls);
+    // console.log('validateEmail mock called:', validateEmail.mock.calls.length, 'times');
+    // console.log('validateEmail mock calls:', validateEmail.mock.calls);
     
     // Wait for email error to disappear
     await waitFor(() => {
