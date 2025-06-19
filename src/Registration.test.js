@@ -90,21 +90,16 @@ describe('Registration form', () => {
     
     // Fill out ALL form fields
     await user.type(screen.getByPlaceholderText(/First name/i), 'John');
-    await delay(200);
-    
+  
     await user.type(screen.getByPlaceholderText(/Last name/i), 'Doe');
-    await delay(200);
     
     await user.type(screen.getByPlaceholderText(/Email address/i), 'john@example.com');
-    await delay(300);
     
     await user.type(screen.getByPlaceholderText(/Password/i), 'password123');
-    await delay(200);
     
     const roleSelect = screen.getByRole('combobox');
     await user.selectOptions(roleSelect, 'individual');
-    await delay(500);
-
+  
     // Wait for form to become valid
     await waitFor(() => {
       const submitButton = screen.getByRole('button', { name: /create account/i });
@@ -118,8 +113,9 @@ describe('Registration form', () => {
     await delay(500);
 
     // Check that navigation was called
+    // Check that navigation was called with the correct route
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalled();
+      expect(mockNavigate).toHaveBeenCalledWith('/welcome');
     }, { timeout: 10000 });
   });
 });
